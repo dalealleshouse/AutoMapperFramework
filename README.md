@@ -13,7 +13,7 @@ PM> Install-Package AutoMapperFramework
 
 Next, you need to decorate the classes you want to create maps for with one or more of three header interfaces: IMapTo\<T\>, IMapFrom\<T\>, and IHaveCustomMappings. The first two are fairly self-explanatory: they will create a default map with no additional options. Your code file will look something like below:
 
-```c#
+```csharp
 public class SomeClass: IMapFrom<SomeClassDto>, IMapTo<SomeClassDto>
 {
     public string SomeProperty { get; set; }
@@ -28,7 +28,7 @@ public class SomeClassDto
 ```
 Use IHaveCustomMappings if you need special options for your map.
 
-```c#
+```csharp
 public class SomeClass: IHaveCustomMappings
 {
     public string SomeProperty { get; set; }
@@ -50,7 +50,7 @@ public class SomeClassDto
 ```
 Finally, you just need to tell AutoMapperFramework to load your maps. Create a class like the one below and run it on app start (Global.asax or anyway you like). If you have maps that do not exist in the currently executing assembly, just pass those types into LoadMappings separately. LoadMappings just accepts an IEnumerable<Type>.
 
-```c#
+```csharp
 public static class AutoMapperConfig
 {
     public static void RegisterMaps()
